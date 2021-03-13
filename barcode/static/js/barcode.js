@@ -7,9 +7,8 @@ $(document).ready(function () {
                 $.get(
                     'create/' + barcode + '/',
                     function(data){
-                        console.log(data);
                         if(data['status'] == 'ready'){
-                            $('img').attr('src', '/static/img/barcode.png')
+                            $('img').attr('src', '/static/img/barcode/' + barcode + '.png');
                         }
                     },
                     'json'
@@ -18,8 +17,13 @@ $(document).ready(function () {
             else{
                 $('#warning').text('Code barre faux.');
             }
+        }
         else if(barcode.length > 13){
-            $('#warning').text('Code barre trop long.')
+            $('#warning').text('Code barre trop long.');
+            $('img').attr('src', '');
+        }
+        else{
+            $('img').attr('src', '')
         }
     });
 });

@@ -16,9 +16,10 @@ def create(request, **kwargs):
     code = kwargs['barcode']
 
     os.system(
-        "barcode -b {} -e 'ean13' -u mm -g 100x50 -S -o static/img/barcode.svg; \
-        convert static/img/barcode.svg -transparent '#FFFFFF' static/img/barcode.png; \
-        rm static/img/barcode.svg"
+        "rm static/img/barcode/*.png; \
+        barcode -b {0} -e 'ean13' -u mm -g 100x50 -S -o static/img/barcode/barcode.svg; \
+        convert static/img/barcode/barcode.svg -transparent '#FFFFFF' static/img/barcode/{0}.png; \
+        rm static/img/barcode/*.svg"
         .format(code))
 
     return JsonResponse({
