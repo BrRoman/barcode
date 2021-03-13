@@ -15,7 +15,9 @@ $(document).ready(function () {
                     'json'
                 )
             }
-        }
+            else{
+                $('#warning').text('Code barre faux.');
+            }
         else if(barcode.length > 13){
             $('#warning').text('Code barre trop long.')
         }
