@@ -15,15 +15,17 @@ $(document).ready(function () {
                 )
             }
             else{
-                $('#warning').text('Code barre faux.');
+                $('#warning').text('Wrong code.');
             }
         }
-        else if(barcode.length > 13){
-            $('#warning').text('Code barre trop long.');
+        else {
             $('img').attr('src', '');
-        }
-        else{
-            $('img').attr('src', '')
+            if(barcode.length > 13){
+                $('#warning').text('Code too long.');
+            }
+            else{
+                $('#warning').text('');
+            }
         }
     });
 });
